@@ -48,10 +48,10 @@ flashcardRouter.put("/:id", async (request, response) => {
 // Remove flashcard
 flashcardRouter.delete("/:id", async (request, response) => {
   const flashcardId = request.params.id;
-  const deletedCard = await Flashcard.findOneAndDelete({ id: flashcardId });
+  const deletedCard = await Flashcard.findByIdAndDelete(flashcardId);
 
   // TODO: HANDLE DECK NOT FOUND
-  const deck = await Deck.findOne({ id: deletedCard.deck });
+  const deck = await Deck.findById(deletedCard.deckId);
   deck.flashcards = deck.flashcards.filter(
     (flashcard) => flashcard.toString() !== flashcardId
   );
