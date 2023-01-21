@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const flashcardSchema = new mongoose.Schema({
   front: { type: String, required: true },
   back: { type: String, required: true },
-  deck: [{ type: mongoose.Schema.Types.ObjectId, ref: "Deck" }],
+  deckId: { type: mongoose.Schema.Types.ObjectId, ref: "Deck" },
   createdDate: { type: Date, required: true },
 });
 

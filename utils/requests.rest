@@ -1,8 +1,8 @@
 
-###
+### GET DECKS
 GET http://localhost:3001/api/decks
 
-###
+### CREATE DECK
 POST http://localhost:3001/api/decks
 Content-Type: application/json
 
@@ -10,12 +10,30 @@ Content-Type: application/json
   "name": "Test deck"
 }
 
-###
+### GET DECK BY ID
+GET http://localhost:3001/api/decks/63cbc1abf6c4653a2c18d1da
+
+### DELETE DECK
+DELETE http://localhost:3001/api/decks/63cbc6a7469f368eaba8e11e
+
+
+### CREATE FLASHCARD
 POST http://localhost:3001/api/flashcards
 Content-Type: application/json
 
 {
-  "front": "Test deck",
-  "back": "Test deck",
-  "deckId": "63cb324317cec7e8d0301b27" 
+  "front": "Wil aadsf delete",
+  "back": "asdfasdf i?",
+  "deckId": "63cbcac8453e63447fb4ce78" 
 }
+
+### Update Flashcard
+PUT http://localhost:3001/api/flashcards/63cbcacf453e63447fb4ce7e
+Content-Type: application/json
+
+{
+  "back": "Version 3 back"
+}
+
+### DELETE FLASHCARD
+DELETE http://localhost:3001/api/flashcards/63cbcacf453e63447fb4ce7e
