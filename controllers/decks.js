@@ -10,15 +10,13 @@ deckRouter.get("/", async (request, response) => {
 
 // Get deck by id
 deckRouter.get("/:id", async (request, response) => {
-  const deck = await Deck.findOne({ id: request.params.id }).populate(
-    "flashcards"
-  );
+  const deck = await Deck.findById(request.params.id).populate("flashcards");
   return response.json(deck);
 });
 
 // remove deck
 deckRouter.delete("/:id", async (request, response) => {
-  await Deck.deleteOne({ id: request.params.id });
+  await Deck.findByIdAndDelete(request.params.id);
   await Flashcard.deleteMany({ deckId: request.params.id });
   return response.status(204).end();
 });

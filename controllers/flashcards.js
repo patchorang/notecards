@@ -9,8 +9,9 @@ flashcardRouter.get("/", async (request, response) => {
 });
 
 // get flashcard by id
+// TODO: Will match key of deck and return
 flashcardRouter.get("/:id", async (request, response) => {
-  const flashcard = await Flashcard.findOne({ id: request.params.id });
+  const flashcard = await Flashcard.findById(request.params.id);
   return response.status(201).json(flashcard);
 });
 
@@ -25,13 +26,12 @@ flashcardRouter.post("/", async (request, response) => {
   });
 
   const newFlashcard = await flashcard.save();
-
   // TODO: HANDLE DECK NOT FOUND
-  const deck = await Deck.findOne({ id: data.deckId });
-  deck.flashcards = deck.flashcards.concat(newFlashcard);
+  const deck = await Deck.findById(data.deckId);
+  deck.flashcards = deck.flashcards.concat(newFlashcard._id);
   await deck.save();
 
-  response.status(201).json(newFlashcard);
+  return response.status(201).json(newFlashcard);
 });
 
 // Update flashcard
