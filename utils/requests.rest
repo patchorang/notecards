@@ -1,0 +1,21 @@
+
+###
+GET http://localhost:3001/api/decks
+
+###
+POST http://localhost:3001/api/decks
+Content-Type: application/json
+
+{
+  "name": "Test deck"
+}
+
+###
+POST http://localhost:3001/api/flashcards
+Content-Type: application/json
+
+{
+  "front": "Test deck",
+  "back": "Test deck",
+  "deckId": "63cb324317cec7e8d0301b27" 
+}
